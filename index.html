@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn Linux, Shell Scripting, and System Programming</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2, h3 {
+      color: #34495e;
+    }
+    p, li {
+      color: #555;
+    }
+    code, pre {
+      background: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      display: inline-block;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 Linux, Shell Scripting & System Programming Guide</h1>
+  <h2>Made By: <strong>Tayyaba Rehman</strong> </h2>
+  <p>Master Linux commands, Shell scripting, and System programming fundamentals!</p>
+</header>
+
+<section>
+  <h2>🖥️ Terminal Basics</h2>
+  <ul>
+    <li><code>date</code> — Display current date and time.</li>
+    <li><code>echo "Hello World"</code> — Print text to screen.</li>
+    <li><code>clear</code> — Clear the terminal screen.</li>
+    <li><code>whoami</code> — Show current username.</li>
+    <li><code>who</code> — See who is logged into the system.</li>
+    <li><code>sort filename.txt</code> — Sort the lines in a file.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🔗 Pipe Operator ( | )</h2>
+  <p><strong>Definition:</strong> Send output of one command into another command.</p>
+  <pre><code>cat file.txt | sort</code></pre>
+  <p>This sorts the contents of <code>file.txt</code>.</p>
+</section>
+
+<section>
+  <h2>📜 Bash Scripting Essentials</h2>
+
+  <h3>🖊️ Variables</h3>
+  <pre><code>name="Linux"
+echo "Hello, $name!"</code></pre>
+
+  <h3>🔢 Positional Parameters</h3>
+  <pre><code>echo "First arg: $1"
+echo "Second arg: $2"</code></pre>
+
+  <h3>🛠️ For Loop</h3>
+  <pre><code>for i in 1 2 3
+do
+  echo "Item $i"
+done</code></pre>
+
+  <h3>🔁 While Loop</h3>
+  <pre><code>count=1
+while [ $count -le 3 ]
+do
+  echo "Number $count"
+  ((count++))
+done</code></pre>
+
+  <h3>🔀 Case Statement</h3>
+  <pre><code>read -p "Choose a number: " num
+case $num in
+  1) echo "One";;
+  2) echo "Two";;
+  *) echo "Other";;
+esac</code></pre>
+
+  <h3>🧮 Arithmetic Operations</h3>
+  <p><strong>Addition, subtraction, multiplication, division in Bash:</strong></p>
+  <pre><code>a=10
+b=5
+echo "Sum = $((a+b))"
+echo "Subtract = $((a-b))"
+echo "Product = $((a/*b))"
+echo "Division = $((a/b))"</code></pre>
+
+  <h3>🔧 Functions</h3>
+  <pre><code>greet() {
+  echo "Welcome, $1!"
+}
+greet "User"</code></pre>
+
+</section>
+
+<section>
+  <h2>🌐 Shell Types</h2>
+  <ul>
+    <li><strong>System Shell:</strong> Provided by OS (e.g., /bin/sh).</li>
+    <li><strong>User Shell:</strong> Chosen by user (e.g., bash, zsh).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🔒 Predefined Shell Variables</h2>
+  <ul>
+    <li><code>$HOME</code> — Home directory path.</li>
+    <li><code>$USER</code> — Current user.</li>
+    <li><code>$PWD</code> — Current working directory.</li>
+    <li><code>$SHELL</code> — Shell program path.</li>
+    <li><code>$PATH</code> — Search path for executable files.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🖊️ User-Defined Variables</h2>
+  <p>Define your own variable:</p>
+  <pre><code>myvar="Welcome"
+echo "$myvar to Linux!"</code></pre>
+</section>
+
+<section>
+  <h2>⚙️ System Programming (C Language)</h2>
+
+  <h3>🔹 system() Function</h3>
+  <p>Runs a shell command inside a C program.</p>
+  <pre><code>#include &lt;stdlib.h&gt;
+int main() {
+    system("ls -l");
+    return 0;
+}</code></pre>
+
+  <h3>🔹 fork() - Create a New Process</h3>
+  <p>Creates a child process.</p>
+  <pre><code>#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+int main() {
+    fork();
+    printf("Hello Process\n");
+    return 0;
+}</code></pre>
+
+  <h3>🔹 exec() - Replace Current Process</h3>
+  <p>Runs a different program inside current process.</p>
+  <pre><code>#include &lt;unistd.h&gt;
+int main() {
+    execl("/bin/ls", "ls", "-l", NULL);
+    return 0;
+}</code></pre>
+
+  <h3>🔹 wait() - Wait for Child</h3>
+  <p>Parent waits for child process to finish.</p>
+  <pre><code>#include &lt;sys/wait.h&gt;
+#include &lt;unistd.h&gt;
+int main() {
+    fork();
+    wait(NULL);
+    return 0;
+}</code></pre>
+
+  <h3>🔹 exit() - End a Program</h3>
+  <pre><code>#include &lt;stdlib.h&gt;
+int main() {
+    exit(0);
+}</code></pre>
+
+  <h3>🔹 getpid() and getppid()</h3>
+  <p><code>getpid()</code> — Get current process ID, <code>getppid()</code> — Get parent process ID.</p>
+  <pre><code>#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+int main() {
+    printf("My PID: %d\n", getpid());
+    printf("My Parent PID: %d\n", getppid());
+    return 0;
+}</code></pre>
+
+</section>
+
+<section>
+  <h2>📚 Getting Help</h2>
+  <ul>
+    <li><code>man command</code> — Read manual page.</li>
+    <li><code>command --help</code> — Quick help options.</li>
+  </ul>
+</section>
+
+<footer>
+  🎯 Congratulations! You're now ready to master Linux, Shell scripting, and basic System programming!
+</footer>
+
+</body>
+</html>
+
+
